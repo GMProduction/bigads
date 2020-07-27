@@ -13,9 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//USER
+
 Route::get('/', function () {
-    return view('depan.welcome');
+    return view('user.home');
 });
+
+Route::get('/contact', function () {
+    return view('user.contact');
+});
+
+Route::get('/detail', function () {
+    return view('user.detail');
+});
+
+Route::get('/dashboard', function () {
+    return view('user.dashboard');
+});
+
+Route::get('/user/transaksi', function () {
+    return view('user.transaksi.transaksi');
+});
+
+Route::get('/user/profil', function () {
+    return view('user.profil.profil');
+});
+
 
 Route::get('/login', function () {
     return view('login.login');

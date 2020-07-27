@@ -2,181 +2,159 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title>MITRA</title>
+    <title>BIG Ads</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="The Plaza eCommerce Template">
+    <meta name="keywords" content="plaza, eCommerce, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-{{--    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">--}}
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <!-- Icons -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
-    <!-- Page plugins -->
-    <!-- Argon CSS -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/DataTables/datatables.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('/assets/css/argon.css?v=1.2.0')}}" type="text/css">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="img/favicon.ico" rel="shortcut icon"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{asset('webc/css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('webc/css/font-awesome.min.css')}} "/>
+    <link rel="stylesheet" href="{{asset('webc/css/owl.carousel.css')}} "/>
+    <link rel="stylesheet" href="{{asset('webc/css/style.css')}} "/>
+    <link rel="stylesheet" href="{{asset('webc/css/animate.css')}} "/>
+
+    @yield('css')
+
 </head>
 
 <body style="background-color: #eeeeee">
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
 <!-- Sidenav -->
-<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-    <div class="scrollbar-inner">
-        <!-- Brand -->
-        <div class="sidenav-header" style="margin-top: 20px; margin-left: 24px; height: 40px; text-align: start">
-{{--            <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">--}}
-            <a> BIG ADS</a>
+<!-- Header section -->
+<header class="header-section header-normal">
+    <div class="container-fluid" style="background-color: black">
+
+        <!-- logo -->
+        <div class="site-logo">
+            <img src="{{asset('webc/img/logo.png')}}" style="height: 50px" alt="logo">
         </div>
-        <div class="navbar-inner">
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                <!-- Nav items -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/">
-                            <i data-feather="menu"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/iklan">
-                            <i data-feather="airplay"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Iklan</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/transaksi">
-                            <i data-feather="book"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Transaksi</span>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/profil">
-                            <i data-feather="user"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Profil</span>
-                        </a>
-                    </li>
-
-
-
-                </ul>
-                <!-- Divider -->
-                <hr class="my-3">
-
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" target="/logout">
-                            <i class="text-red " data-feather="log-out"></i>
-                            <span class="nav-link-text text-red" style="margin-left: 10px">keluar</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <!-- responsive -->
+        <div class="nav-switch">
+            <i class="fa fa-bars"></i>
         </div>
+        <div class="header-right">
+
+            <a href="#" class="search"><img src="{{asset('webc/img/icons/account.png')}}" style="width: 40px" alt=""></a>
+        </div>
+        <!-- site menu -->
+        <ul class="main-menu">
+            <li><a href="/">Ngiklan</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
     </div>
-</nav>
+</header>
+<!-- Header section end -->
+
 <!-- Main content -->
 <div class="main-content" id="panel">
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Search form -->
-
-                <!-- Navbar links -->
-                <ul class="navbar-nav align-items-center  ml-md-auto ">
-
-                    <li class="nav-item dropdown">
-
-                        <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
-                            <!-- Dropdown header -->
-
-                            <!-- List group -->
-                            <div class="list-group list-group-flush">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <!-- Avatar -->
-                                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg"
-                                             class="avatar rounded-circle">
-                                    </div>
-                                    <div class="col ml--2">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <h4 class="mb-0 text-sm">John Snow</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            <div class="media align-items-center">
-                  <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-4.png">
-                  </span>
-                                <div class="media-body  ml-2  d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu  dropdown-menu-right ">
-
-                            <a href="/logout" class="dropdown-item">
-                                <i class="ni ni-user-run"></i>
-                                <span>Logout</span>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="content-wrapper">
+        <div class="content-wrapper">
         @yield('content')
     </div>
-
-    <!-- Footer -->
-    <footer class="footer pt-0">
-        <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6">
-                <div class="copyright text-center  text-lg-left  text-muted">
-                    &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                   target="_blank">Wisnu</a>
-                </div>
-            </div>
-
-        </div>
-    </footer>
 </div>
 <!-- Argon Scripts -->
-<!-- Core -->
-<script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.jss')}}"></script>
-<script src="{{asset('assets/vendor/js-cookie/js.cookie.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
-<!-- Optional JS -->
-<script src="{{asset('assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
-<script src="{{asset('assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
-<!-- Argon JS -->
-<script src="{{asset('assets/js/argon.js?v=1.2.0')}}"></script>
-<script type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"></script>
-<script>
-    feather.replace()
-</script>
+<!-- Footer top section -->
+<section class="footer-top-section home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-8 col-sm-12">
+                <div class="footer-widget about-widget">
+                    <img src="{{asset('webc/img/logo.png')}} " class="footer-logo" alt="">
+                    <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam fringilla faucibus
+                        urna, id dapibus erat iaculis ut. Integer ac sem.</p>
+                    <div class="cards">
+                        <img src="{{asset('webc/img/cards/5.png')}} " alt="">
+                        <img src="{{asset('webc/img/img/cards/4.png')}} " alt="">
+                        <img src="{{asset('webc/img/img/cards/3.png')}}" alt="">
+                        <img src="{{asset('webc/img/cards/2.png')}} " alt="">
+                        <img src="{{asset('webc/img/cards/1.png')}} " alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="footer-widget">
+                    <h6 class="fw-title">usefull Links</h6>
+                    <ul>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Bloggers</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Sitemap</h6>
+                    <ul>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Bloggers</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Shipping & returns</h6>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Track Orders</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Contact</h6>
+                    <div class="text-box">
+                        <p>Your Company Ltd </p>
+                        <p>1481 Creekside Lane Avila Beach, CA 93424, </p>
+                        <p>+53 345 7953 32453</p>
+                        <p>office@youremail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer top section end -->
+<!-- Footer section -->
+<footer class="footer-section">
+    <div class="container">
+        <p class="copyright">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+            All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+    </div>
+</footer>
+<!-- Footer section end -->
+
+<!--====== Javascripts & Jquery ======-->
+<script src="{{asset('webc/js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('webc/js/bootstrap.min.js')}} "></script>
+<script src="{{asset('webc/js/owl.carousel.min.js')}} "></script>
+<script src="{{asset('webc/js/mixitup.min.js')}} "></script>
+<script src="{{asset('webc/js/sly.min.js')}} "></script>
+<script src="{{asset('webc/js/jquery.nicescroll.min.js')}} "></script>
+<script src="{{asset('webc/js/main.js')}} "></script>
 @yield('script')
 
 </body>

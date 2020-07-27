@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>admin</title>
+    <title>user</title>
     <!-- Favicon -->
 {{--    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">--}}
     <!-- Fonts -->
@@ -36,21 +36,16 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/">
+                        <a class="nav-link active" href="/user/">
                             <i data-feather="menu"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Dashboard</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/iklan">
-                            <i data-feather="airplay"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Iklan</span>
-                        </a>
-                    </li>
+
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/transaksi">
+                        <a class="nav-link active" href="/user/transaksi">
                             <i data-feather="book"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Transaksi</span>
                         </a>
@@ -58,9 +53,9 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/mitra">
+                        <a class="nav-link active" href="/user/profil">
                             <i data-feather="user"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Data Mitra</span>
+                            <span class="nav-link-text" style="margin-left: 10px">Profil</span>
                         </a>
                     </li>
 

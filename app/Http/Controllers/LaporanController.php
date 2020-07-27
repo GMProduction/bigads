@@ -54,4 +54,26 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
+    public function userDataTransaksi(Request $request)
+    {
+//        $caridata = $request->caridata;
+//        $status = $request->status;
+//        $mitra = mitraModel::where('status', 'LIKE', '%' . $status . '%')
+//            ->where(function ($q) use ($caridata) {
+//                $q->where('username', 'LIKE', '%' . $caridata . '%')
+//                    ->orwhere('email', 'LIKE', '%' . $caridata . '%')
+//                    ->orwhere('noHp', 'LIKE', '%' . $caridata . '%')
+//                    ->orwhere('alamat', 'LIKE', '%' . $caridata . '%');
+//            })
+//            ->get();
+        return view('user.transaksi.cetak')->with(['mitra' => "datanya"]);
+    }
+
+    public function cetakuserDataTransaksi(Request $request)
+    {
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->adminDataMitra($request));
+        return $pdf->stream();
+    }
 }

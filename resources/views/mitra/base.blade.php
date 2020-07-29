@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/DataTables/datatables.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/assets/css/argon.css?v=1.2.0')}}" type="text/css">
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="{{asset('assets/js/swal.min.js')}}"></script>
+
 </head>
 
 <body style="background-color: #eeeeee">
@@ -36,21 +38,21 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/">
+                        <a class="nav-link" id="dashboard" href="/mitra/">
                             <i data-feather="menu"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/iklan">
+                        <a class="nav-link" id="iklan" href="/mitra/iklan">
                             <i data-feather="airplay"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Iklan</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/transaksi">
+                        <a class="nav-link" id="transaksi" href="/mitra/transaksi">
                             <i data-feather="book"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Transaksi</span>
                         </a>
@@ -58,7 +60,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/mitra/profil">
+                        <a class="nav-link" id="profil" href="/mitra/profil">
                             <i data-feather="user"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Profil</span>
                         </a>
@@ -73,7 +75,7 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" target="/logout">
+                        <a class="nav-link" href="/logout" target="">
                             <i class="text-red " data-feather="log-out"></i>
                             <span class="nav-link-text text-red" style="margin-left: 10px">keluar</span>
                         </a>
@@ -173,7 +175,8 @@
 <script src="{{asset('assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
 <!-- Argon JS -->
 <script src="{{asset('assets/js/argon.js?v=1.2.0')}}"></script>
-<script type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"></script>
+<script src="{{asset('assets/js/componen.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/DataTables/datatables.min.js')}}"></script>
 <script>
     feather.replace()
 </script>

@@ -50,13 +50,13 @@
                         </div>
                         <form method="POST" action="/post-register">
                             @csrf
-
+                            <input id="roles" name="roles" value="mitra">
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-shop"></i></span>
                                     </div>
-                                    <input class="form-control" id="nama" name="nama" placeholder="nama mitra" type="text">
+                                    <input class="form-control" id="nama" name="nama" placeholder="nama mitra" required type="text">
                                 </div>
                             </div>
 
@@ -65,7 +65,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                                     </div>
-                                    <input class="form-control" id="phone" name="phone" placeholder="phone" type="text">
+                                    <input class="form-control" id="phone" name="phone" placeholder="phone" required type="text">
                                 </div>
                             </div>
 
@@ -74,7 +74,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                     </div>
-                                    <input class="form-control" id="alamat" name="alamat" placeholder="alamat" type="text">
+                                    <input class="form-control" id="alamat" name="alamat" placeholder="alamat" required type="text">
                                 </div>
                             </div>
 
@@ -83,18 +83,25 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control" id="email" name="email" placeholder="email" type="email">
+                                    <input class="form-control" id="username" name="username" placeholder="Username" required type="text">
                                 </div>
                             </div>
 
-
+                            <div class="form-group mb-3">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <input class="form-control" id="email" name="email" placeholder="email" required type="email">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+                                    <input class="form-control" id="password" name="password" placeholder="Password" required type="password">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -102,7 +109,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control"  name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi Password" type="password">
+                                    <input class="form-control"  name="password_confirmation" id="password_confirmation" required placeholder="Konfirmasi Password" type="password">
                                 </div>
                             </div>
                             <div class="text-center">

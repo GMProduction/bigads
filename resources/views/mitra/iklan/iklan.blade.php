@@ -49,44 +49,32 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
+                            @forelse($produk as $p)
+                                <tr>
+                                    <td>{{$p->nama}}</td>
+                                    <td>{{$p->url}}</td>
+                                    <td>{{$p->jenis}}</td>
+                                    <td>{{$p->traffic}}</td>
+                                    <td>{{$p->ukuran}}</td>
+                                    <td>Rp. {{number_format($p->harga, 0,',','.')}}</td>
+                                    <td class="budget">
+                                        <a href="{{asset('uploads/iklan')}}/{{$p->images}}"><img src="{{asset('uploads/iklan')}}/{{$p->images}}"
+                                                                                                   style="height: 75px; width: 75px; object-fit: cover"></a>
+                                    </td>
 
-                                <td class="budget">
-                                    1
-                                </td>
+                                    <td class="budget">
+                                        <a> tayang / tolak</a>
+                                    </td>
 
-                                <td class="budget">
-                                    Facebook Banner
-                                </td>
-                                <td class="budget">
-                                    Facebook.com
-                                </td>
-                                <td class="budget">
-                                    banner
-                                </td>
-                                <td class="budget">
-                                    @number(200000000000)
-                                </td>
-                                <td class="budget">
-                                    600 x 300
-                                </td>
-
-                                <td class="budget">
-                                    @money(50000)
-                                </td>
-
-                                <td class="budget">
-                                    <a href="{{asset('assets/img/theme/bootstrap.jpg')}}"><img src="{{asset('assets/img/theme/bootstrap.jpg')}}" style="height: 75px; width: 75px; object-fit: cover"></a>
-                                </td>
-
-                                <td class="budget">
-                                    <a> tayang / tolak</a>
-                                </td>
-
-                                <td>
-                                    <a href="/mitra/tambahiklan" class="btn btn-sm btn-dribbble">Edit</a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="/mitra/tambahiklan" class="btn btn-sm btn-dribbble">Edit</a>
+                                    </td>
+                                </tr>
+                                @empty
+                                    <tr>
+                                        <td class="text-center" colspan="10">Belum ada produk</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::post('/post-register', 'Auth\AuthController@register');
 
 Route::get('/product/{id}', 'Main\MainController@detail');
 
@@ -40,7 +41,7 @@ Route::get('/kontak', function () {
 });
 
 
-Route::get('/dashboard', function () {
+Route::get('/user', function () {
     return view('user.dashboard');
 });
 
@@ -56,6 +57,7 @@ Route::get('/user/profil', function () {
 Route::get('/login', function () {
     return view('login.login');
 });
+Route::post('/post-login', 'Auth\AuthController@login');
 
 Route::get('/daftarmitra', function () {
     return view('login.daftarmitra');
@@ -71,13 +73,11 @@ Route::get('/mitra', function () {
     return view('mitra.dashboard');
 });
 
-Route::get('/mitra/iklan', function () {
-    return view('mitra.iklan.iklan');
-});
-
+Route::get('/mitra/iklan', 'Mitra\IklanController@index');
 Route::get('/mitra/tambahiklan', function () {
     return view('mitra.iklan.tambahiklan');
 });
+Route::post('/mitra/tambahiklan', 'Mitra\IklanController@addForm');
 
 Route::get('/mitra/transaksi', function () {
     return view('mitra.transaksi.transaksi');
@@ -107,3 +107,5 @@ Route::get('/admin/mitra', function () {
 
 Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi')->name('cetakAdminDataTransaksi');
 Route::get('/admin/mitra/cetak', 'LaporanController@cetakAdminDataMitra')->name('cetakAdminDataMitra');
+
+Route::get('/logout', 'Auth\AuthController@logout');

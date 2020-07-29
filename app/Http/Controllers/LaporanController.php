@@ -73,7 +73,9 @@ class LaporanController extends Controller
     {
 
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->adminDataMitra($request));
+        $pdf->loadHTML($this->adminDataMitra($request))->setPaper('b4', 'landscape');
         return $pdf->stream();
     }
+
+
 }

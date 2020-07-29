@@ -101,6 +101,10 @@ Route::get('/admin/transaksi', function () {
     return view('admin.transaksi.transaksi');
 });
 
+Route::get('/admin/detailtransaksi', function () {
+    return view('admin.transaksi.detailtransaksi');
+});
+
 Route::get('/admin/mitra', function () {
     return view('admin.mitra.mitra');
 });

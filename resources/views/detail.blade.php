@@ -5,18 +5,23 @@
     <section class="container mt-5 mb-5">
         <div class="row">
             <div class="col-7">
-                <img src="" style="width: 100%; height: 300px; object-fit: cover">
+                <img src="{{asset('/images/uploads')}} / {{ $product->url }}"
+                     style="width: 100%; height: 300px; object-fit: cover">
             </div>
 
             <div class="col-5">
-                <p style="font-size: 30px; font-weight: bold" class="mb-3">Nama Iklan</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >http://facebook.com</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Iklan Banner</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >200.000 kunjungan /bulan</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50" >300px X 200px</p>
-                <p style="font-size: 20px; font-weight: bold" class="text-primary mb-4">Rp. 100.000 /Hari</p>
+                <p style="font-size: 30px; font-weight: bold" class="mb-3">{{ $product->nama }}</p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0"><a href="{{ $product->url }}"
+                                                                                            target="_blank">{{ $product->url }}</a>
+                </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0">Iklan {{ $product->jenis }}</p>
+                <p style="font-size: 14px; font-weight: bold"
+                   class="text-black-50 mb-0">{{ number_format($product->traffic, 0, ',', '.') }} kunjungan /bulan</p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50">{{ $product->ukuran }}px</p>
+                <p style="font-size: 20px; font-weight: bold" class="text-primary mb-4">
+                    Rp. {{ number_format($product->harga, 0, ',', '.') }} /Hari</p>
 
-                <button type="button" class="btn  btn-primary w-50">Pesan Sekarang</button>
+                <button type="button" onclick="addToCart()" class="btn  btn-primary w-50">Pesan Sekarang</button>
 
             </div>
         </div>
@@ -32,62 +37,22 @@
 
     <section class="container">
         <div class="row">
-            <div class="col-3">
-                <div class="card" style="height: 350px">
-                    <img class="card-img-top" src="" alt="Card image cap"
-                         style="height: 150px; object-fit: cover">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">Nama Iklan</h5>
-                        <h4 class="card-title text-primary mt-0 mb-1">Rp 100.000/ hari</h4>
-                        <p class="card-text text-sm text-black-50 mb-0" >Jenis Iklan</p>
-                        <p class="card-text text-sm text-black-50" >Ukuran</p>
-                        <a href="/product/" class="btn btn-primary">Detail</a>
+            @foreach($products as $v)
+                <div class="col-3">
+                    <div class="card" style="height: 350px">
+                        <img class="card-img-top" src="{{asset('/images/uploads')}} / {{ $v->url }}" alt="Card image cap"
+                             style="height: 150px; object-fit: cover">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">{{ $v->nama }}</h5>
+                            <h4 class="card-title text-primary mt-0 mb-1">
+                                Rp. {{ number_format($v->harga, 0, ',', '.') }}/ hari</h4>
+                            <p class="card-text text-sm text-black-50 mb-0">{{ $v->jenis }}</p>
+                            <p class="card-text text-sm text-black-50">{{ $v->ukuran }}</p>
+                            <a href="/product/{{ $v->id }}" class="btn btn-primary">Detail</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-3">
-                <div class="card" style="height: 350px">
-                    <img class="card-img-top" src="" alt="Card image cap"
-                         style="height: 150px; object-fit: cover">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">Nama Iklan</h5>
-                        <h4 class="card-title text-primary mt-0 mb-1">Rp 100.000/ hari</h4>
-                        <p class="card-text text-sm text-black-50 mb-0" >Jenis Iklan</p>
-                        <p class="card-text text-sm text-black-50" >Ukuran</p>
-                        <a href="/product/" class="btn btn-primary">Detail</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <div class="card" style="height: 350px">
-                    <img class="card-img-top" src="" alt="Card image cap"
-                         style="height: 150px; object-fit: cover">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">Nama Iklan</h5>
-                        <h4 class="card-title text-primary mt-0 mb-1">Rp 100.000/ hari</h4>
-                        <p class="card-text text-sm text-black-50 mb-0" >Jenis Iklan</p>
-                        <p class="card-text text-sm text-black-50" >Ukuran</p>
-                        <a href="/product/" class="btn btn-primary">Detail</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <div class="card" style="height: 350px">
-                    <img class="card-img-top" src="" alt="Card image cap"
-                         style="height: 150px; object-fit: cover">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">Nama Iklan</h5>
-                        <h4 class="card-title text-primary mt-0 mb-1">Rp 100.000/ hari</h4>
-                        <p class="card-text text-sm text-black-50 mb-0" >Jenis Iklan</p>
-                        <p class="card-text text-sm text-black-50" >Ukuran</p>
-                        <a href="/product/" class="btn btn-primary">Detail</a>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </section>
 @endsection
@@ -95,11 +60,26 @@
 @section('script')
 
     <script>
-        $(document).ready(function() {
+        async function addToCart() {
+            let data = {
+                '_token': "{{ csrf_token() }}",
+                id: '{{ $product->id }}',
+                harga: '{{ $product->harga }}',
+                qty: $('#qty').val()
+            };
+            try {
+                let res = await $.post('/ajax/addToCart', data);
+                alert(res['status'])
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        $(document).ready(function () {
             const minus = $('.quantity__minus');
             const plus = $('.quantity__plus');
             const input = $('.quantity__input');
-            minus.click(function(e) {
+            minus.click(function (e) {
                 e.preventDefault();
                 var value = input.val();
                 if (value > 1) {
@@ -108,7 +88,7 @@
                 input.val(value);
             });
 
-            plus.click(function(e) {
+            plus.click(function (e) {
                 e.preventDefault();
                 var value = input.val();
                 value++;

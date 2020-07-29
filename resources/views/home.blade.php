@@ -40,21 +40,20 @@
     </div>
     <section class="container">
         <div class="row">
-{{--            @foreach($products as $v)--}}
+            @foreach($products as $v)
                 <div class="col-3">
                     <div class="card" style="height: 350px">
-                        <img class="card-img-top" src="" alt="Card image cap"
+                        <img class="card-img-top" src="{{asset('uploads/image')}}/{{$v->url}}" alt="Card image cap"
                              style="height: 150px; object-fit: cover">
                         <div class="card-body">
-                            <h5 class="card-title mb-0">Nama Iklan</h5>
-                            <h4 class="card-title text-primary mt-0 mb-1">Rp 100.000/ hari</h4>
-                            <p class="card-text text-sm text-black-50 mb-0" >Jenis Iklan</p>
-                            <p class="card-text text-sm text-black-50" >Ukuran</p>
-                            <a href="/product/" class="btn btn-primary">Detail</a>
+                            <h5 class="card-title mb-0">{{ $v->nama }}</h5>
+                            <h4 class="card-title text-primary mt-0 mb-1">Rp. {{ number_format($v->harga, 0, ',', '.') }}/ hari</h4>
+                            <p class="card-text text-sm text-black-50" style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
+                            <a href="/product/{{ $v->id }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
-{{--            @endforeach--}}
+            @endforeach
         </div>
     </section>
 

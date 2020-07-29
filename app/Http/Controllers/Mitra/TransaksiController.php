@@ -20,8 +20,8 @@ class TransaksiController extends CustomController
 
     public function index(){
         $user = auth()->user()->id;
-        $transaksi = Transaction::where('user_id',$user)->with('payment')->get();
-        return $transaksi->toArray();
+        $transaksi = Transaction::where('user_id',$user)->with(['payment.vendor','produk','user'])->get();
+//        return $transaksi->toArray();
         return view('mitra.transaksi.transaksi')->with(['transaksi' => $transaksi]);
     }
 

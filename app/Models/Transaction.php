@@ -12,12 +12,16 @@ class Transaction extends Model
     protected $table = 'transactions';
 
     public function payment(){
-        return $this->hasMany(Payment::class,'id');
+        return $this->hasMany(Payment::class,'transactions_id');
     }
 
-//    public function user(){
-//        return $this->hasOneThrough(Cart::class, User::class,'id', 'user_id');
-//    }
+    public function produk(){
+        return $this->belongsTo(Produk::class, 'product_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 
 }

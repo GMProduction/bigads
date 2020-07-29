@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     //
+    protected $table = 'payment';
 
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class, 'transactions_id');
+        return $this->belongsTo(Transaction::class, 'id');
     }
 
     public function user()

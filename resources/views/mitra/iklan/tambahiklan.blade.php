@@ -47,7 +47,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="keteranganJadwal" for="namaweb">Nama Iklan</label>
-                                            <input type="text" id="namaweb" name="namaweb"
+                                            <input type="text" id="namaweb" placeholder="Nama Iklan" name="namaweb"
                                                    class="form-control">
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="keteranganJadwal" for="url">Url</label>
-                                            <input type="text" id="url" name="url"
+                                            <input type="text" id="url" name="url" placeholder="Url Iklan"
                                                    class="form-control">
                                         </div>
                                     </div>
@@ -63,15 +63,15 @@
                                     <div class="form-group col-lg-4">
                                         <label for="jenisIklan">Jenis Iklan</label>
                                         <select class="form-control" id="jenisIklan" name="jenisIklan">
-                                            <option value="popup">Pop Up</option>
-                                            <option value="banner">Banner</option>
+                                            <option value="Pop Up">Pop Up</option>
+                                            <option value="Banner">Banner</option>
                                         </select>
                                     </div>
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="keteranganJadwal" for="trafic">Trafic (bulan)</label>
-                                            <input type="number" id="trafic" name="trafic"
+                                            <input type="number" id="trafic" placeholder="Trafik iklan per bulann" name="trafic"
                                                    class="form-control">
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="keteranganJadwal" for="ukuran">Ukuran (pixel)</label>
-                                            <input type="text" id="ukuran" name="ukuran"
+                                            <input type="text" id="ukuran" placeholder="Ukuran iklan (300 x 150)" name="ukuran"
                                                    class="form-control">
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="keteranganJadwal" for="harga">Harga (hari)</label>
-                                            <input type="number" id="harga" name="harga"
+                                            <input type="number" id="harga" placeholder="Harga iklan per hari" name="harga"
                                                    class="form-control">
                                         </div>
                                     </div>

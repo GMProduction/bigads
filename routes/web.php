@@ -70,10 +70,12 @@ Route::get('/mitra', function () {
 });
 
 Route::get('/mitra/iklan', 'Mitra\IklanController@index');
-Route::get('/mitra/tambahiklan', function () {
+Route::get('/mitra/iklan/tambahiklan', function () {
     return view('mitra.iklan.tambahiklan');
 });
-Route::post('/mitra/tambahiklan', 'Mitra\IklanController@addForm');
+Route::post('/mitra/iklan/tambahiklan', 'Mitra\IklanController@addForm');
+Route::get('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
+Route::post('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
 
 Route::get('/mitra/transaksi', function () {
     return view('mitra.transaksi.transaksi');

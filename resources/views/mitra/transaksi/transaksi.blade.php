@@ -16,7 +16,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-{{--                        <a href="/mitra/tambahtransaksi" class="btn btn-md btn-neutral">Tambah Data</a>--}}
+                        {{--                        <a href="/mitra/tambahtransaksi" class="btn btn-md btn-neutral">Tambah Data</a>--}}
                     </div>
                 </div>
             </div>
@@ -37,41 +37,38 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">#</th>
+                                <th scope="col" class="sort" data-sort="budget">Pemesan</th>
                                 <th scope="col" class="sort" data-sort="budget">Nama Iklan</th>
-                                <th scope="col" class="sort" data-sort="status">Tanggal</th>
+                                <th scope="col" class="sort" data-sort="status">Tanggal Mulai</th>
+                                <th scope="col" class="sort" data-sort="status">Tanggal Selesai</th>
                                 <th scope="col" class="sort" data-sort="status">Pembayaran</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col" class="sort" data-sort="status">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
+                            @forelse($transaksi as $t)
+                                <tr>
+                                    <td class="text-center">{{ $loop->index + 1 }}</td>
+                                    <td>{{$t->nama}}</td>
+                                    <td></td>
+                                    <td>{{$t->tgl_mulai}}</td>
+                                    <td>{{$t->tgl_selesai}}</td>
+                                    <td></td>
+                                    <td class="budget">
+                                        Belum di konfirmasi / menunggu tayang / sedang tayang / selesai
+                                    </td>
 
-                                <td class="budget">
-                                    1
-                                </td>
-
-                                <td class="budget">
-                                    Iklan Facebook Banner
-                                </td>
-
-                                <td class="budget">
-                                    12 Mei 2020 - 14 Juli 2020
-                                </td>
-
-                                <td class="budget">
-                                    Belum / Sudah
-                                </td>
-
-                                <td class="budget">
-                                    Belum di konfirmasi / menunggu tayang / sedang tayang / selesai
-                                </td>
-
-                                <td>
-                                    <a href="" class="btn btn-sm btn-primary">Terima</a>
-                                    <a href="" class="btn btn-sm btn-dribbble">Tolak</a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-primary">Terima</a>
+                                        <a href="" class="btn btn-sm btn-dribbble">Tolak</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center">Belum ada transaksi</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>

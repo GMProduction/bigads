@@ -49,7 +49,7 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            @foreach($iklan as $p)
+                            @forelse($iklan as $p)
                                 <tr>
                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                     <td>{{$p->nama}}</td>
@@ -71,12 +71,11 @@
                                         <a href="/mitra/iklan/editiklan/{{$p->id}}" class="btn btn-sm btn-dribbble">Edit</a>
                                     </td>
                                 </tr>
-{{--                                @empty--}}
-{{--                                    <tr>--}}
-{{--                                        <td class="text-center" colspan="10">Belum ada produk</td>--}}
-{{--                                    </tr>--}}
-{{--                                @endforelse--}}
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td class="text-center" colspan="10">Belum ada produk</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

@@ -76,10 +76,7 @@ Route::get('/mitra/iklan/tambahiklan', function () {
 Route::post('/mitra/iklan/tambahiklan', 'Mitra\IklanController@addForm');
 Route::get('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
 Route::post('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
-
-Route::get('/mitra/transaksi', function () {
-    return view('mitra.transaksi.transaksi');
-});
+Route::get('/mitra/transaksi', 'Mitra\TransaksiController@index');
 
 Route::get('/mitra/profil', function () {
     return view('mitra.profil.profil');

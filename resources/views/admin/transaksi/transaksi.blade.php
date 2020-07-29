@@ -56,6 +56,7 @@
                                 <th scope="col" class="sort" data-sort="name">#</th>
                                 <th scope="col" class="sort" data-sort="budget">Nama Iklan</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal</th>
+                                <th scope="col" class="sort" data-sort="status">Total</th>
                                 <th scope="col" class="sort" data-sort="status">Pembayaran</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col" class="sort" data-sort="status">Action</th>

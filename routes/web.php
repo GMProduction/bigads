@@ -16,16 +16,29 @@ use Illuminate\Support\Facades\Route;
 //USER
 
 Route::get('/', function () {
-    return view('user.home');
+    return view('home');
 });
 
-Route::get('/contact', function () {
-    return view('user.contact');
+
+Route::get('/product/{id}', 'Main\MainController@detail');
+
+Route::get('/cart', function () {
+    return view('cart');
 });
 
+
+Route::get('/payment', function () {
+    return view('payment');
+});
 Route::get('/detail', function () {
-    return view('user.detail');
+    return view('detail');
 });
+
+
+Route::get('/kontak', function () {
+    return view('kontak');
+});
+
 
 Route::get('/dashboard', function () {
     return view('user.dashboard');

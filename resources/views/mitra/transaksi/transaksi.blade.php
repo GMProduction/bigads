@@ -41,9 +41,8 @@
                                 <th scope="col" class="sort" data-sort="budget">Nama Iklan</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal Mulai</th>
                                 <th scope="col" class="sort" data-sort="status">Tanggal Selesai</th>
-                                <th scope="col" class="sort" data-sort="status">Status Pembayaran</th>
+{{--                                <th scope="col" class="sort" data-sort="status">Status Pembayaran</th>--}}
                                 <th scope="col" class="sort" data-sort="status">Status</th>
-                                <th scope="col" class="sort" data-sort="status">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -53,16 +52,9 @@
                                     <td>{{$t->user->nama}}</td>
                                     <td>{{$t->produk->nama}}</td>
                                     <td>{{$t->tgl_mulai}}</td>
-                                    <td>{{$t->tgl_selesai}}</td>
-                                    <td>{{$t->payment->status == '0' ? 'Belum' : ($t->payment->status == '1' ? 'Lunas' : 'Ditolak')}}</td>
-                                    <td class="budget">
-                                        Belum di konfirmasi / menunggu tayang / sedang tayang / selesai
-                                    </td>
-
-                                    <td>
-                                        <a href="" class="btn btn-sm btn-primary">Terima</a>
-                                        <a href="" class="btn btn-sm btn-dribbble">Tolak</a>
-                                    </td>
+                                    <td>{{$t->tgl_akhir}}</td>
+{{--                                    <td>{{$t->payment->status == '0' ? 'Belum' : ($t->payment->status == '1' ? 'Lunas' : 'Ditolak')}}</td>--}}
+                                    <td>{{$t->status}}</td>
                                 </tr>
                             @empty
                                 <tr>

@@ -15,6 +15,10 @@ class Transaction extends Model
         return $this->hasMany(Payment::class,'transactions_id');
     }
 
+    public function lastPayment(){
+        return $this->hasMany(Payment::class,'transactions_id')->latest('id');
+    }
+
     public function produk(){
         return $this->belongsTo(Produk::class, 'product_id');
     }

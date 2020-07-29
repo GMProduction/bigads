@@ -16,7 +16,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-{{--                        <a href="/mitra/tambahiklan" class="btn btn-md btn-neutral">Tambah Data</a>--}}
+                        {{--                        <a href="/mitra/tambahiklan" class="btn btn-md btn-neutral">Tambah Data</a>--}}
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
+                        <table id="tabel" class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">#</th>
@@ -46,82 +46,36 @@
                                 <th scope="col" class="sort" data-sort="completion">Harga (hari)</th>
                                 <th scope="col" class="sort" data-sort="completion">screenshot</th>
                                 <th scope="col" class="sort" data-sort="completion">status</th>
-                                <th scope="col" class="sort" data-sort="completion">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
+                            @forelse($iklan as $i)
+                                <tr>
+                                    <td>{{ $loop->index + 1}}</td>
+                                    <td>{{$i->nama}}</td>
+                                    <td>{{$i->user->nama}}</td>
+                                    <td>{{$i->url}}</td>
+                                    <td>{{$i->jenis}}</td>
+                                    <td>{{$i->traffic}}</td>
+                                    <td>{{$i->ukuran}}</td>
+                                    <td>{{number_format($i->harga, 0,',','.')}}</td>
+                                    <td class="budget">
+                                        <a target="_blank" href="{{asset('uploads/iklan')}}/{{$i->images}}"><img src="{{asset('uploads/iklan')}}/{{$i->images}}"
+                                                                                                 style="height: 75px; width: 75px; object-fit: cover"></a>
+                                    </td>
+                                    <td>{{$i->transaksi[0]->status ?? 'Belum dipesan'}}</td>
 
-                                <td class="budget">
-                                    1
-                                </td>
-
-                                <td class="budget">
-                                    Facebook Banner
-                                </td>
-
-                                <td class="budget">
-                                    Facebook corporate
-                                </td>
-
-                                <td class="budget">
-                                    Facebook.com
-                                </td>
-                                <td class="budget">
-                                    banner
-                                </td>
-                                <td class="budget">
-                                    @number(200000000000)
-                                </td>
-                                <td class="budget">
-                                    600 x 300
-                                </td>
-
-                                <td class="budget">
-                                    @money(50000)
-                                </td>
-
-                                <td class="budget">
-                                    <a href="{{asset('assets/img/theme/bootstrap.jpg')}}"><img src="{{asset('assets/img/theme/bootstrap.jpg')}}" style="height: 75px; width: 75px; object-fit: cover"></a>
-                                </td>
-
-                                <td class="budget">
-                                    <a> tayang / tolak</a>
-                                </td>
-
-                                <td>
-                                    <a href="/mitra/tambahiklan" class="btn btn-sm btn-dribbble">Edit</a>
-                                </td>
-                            </tr>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td class="text-center" colspan="10">Belum ada data iklan</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>
                     <!-- Card footer -->
-                    <div class="card-footer py-4">
-                        <nav aria-label="...">
-                            <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -130,6 +84,10 @@
 @endsection
 
 @section('script')
-
+    <script>
+        $(document).ready(function () {
+            $('#tabel').DataTable();
+        });
+    </script>
 
 @endsection

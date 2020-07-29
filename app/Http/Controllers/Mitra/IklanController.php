@@ -14,9 +14,9 @@ class IklanController extends CustomController
 
     public function index(){
         $user = auth()->user()->id;
-        $produk = Produk::where('user_id', $user)->get();
-//        dump($produk);die();
-        return view('mitra.iklan.iklan')->with(['produk', $produk]);
+        $data['iklan'] = Produk::where('user_id', $user)->get();
+//        return $produk->toArray();
+        return view('mitra.iklan.iklan')->with($data);
     }
 
     public function addForm(){

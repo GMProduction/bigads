@@ -34,7 +34,7 @@ class AuthController extends CustomController
     public function login(Request $request)
     {
         $credentials = [
-            'email' => $request['email'],
+            'email'    => $request['email'],
             'password' => $request['password'],
         ];
         if ($this->isAuth($credentials)) {
@@ -46,6 +46,7 @@ class AuthController extends CustomController
             } else {
                 $redirect = '/mitra';
             }
+
             return redirect($redirect);
         }
 
@@ -73,21 +74,15 @@ class AuthController extends CustomController
             'roles'    => $roles,
         ];
 
-        $user        = $this->insert(User::class, $data);
-        $dataProfile = [
-            'user_id' => $user->id,
-        ];
-
         if ($roles == 'mitra') {
-            $dataProfile = Arr::add($dataProfile, 'nama', $this->postField('nama'));
-            $dataProfile = Arr::add($dataProfile, 'no_hp', $this->postField('phone'));
-            $dataProfile = Arr::add($dataProfile, 'alamat', $this->postField('alamat'));
-            $redirect    = '/mitra';
-            $this->insert(MitraProfile::class, $dataProfile);
+            $data     = Arr::add($data, 'nama', $this->postField('nama'));
+            $data     = Arr::add($data, 'phone', $this->postField('phone'));
+            $data     = Arr::add($data, 'alamat', $this->postField('alamat'));
+            $redirect = '/mitra';
         } else {
             $redirect = '/user';
-            $this->insert(UserProfile::class, $dataProfile);
         }
+        $user = $this->insert(User::class, $data);
 
         Auth::loginUsingId($user->id);
 

@@ -49,7 +49,7 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            @forelse($produk as $p)
+                            @foreach($iklan as $p)
                                 <tr>
                                     <td>{{$p->nama}}</td>
                                     <td>{{$p->url}}</td>
@@ -70,11 +70,12 @@
                                         <a href="/mitra/tambahiklan" class="btn btn-sm btn-dribbble">Edit</a>
                                     </td>
                                 </tr>
-                                @empty
-                                    <tr>
-                                        <td class="text-center" colspan="10">Belum ada produk</td>
-                                    </tr>
-                                @endforelse
+{{--                                @empty--}}
+{{--                                    <tr>--}}
+{{--                                        <td class="text-center" colspan="10">Belum ada produk</td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforelse--}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

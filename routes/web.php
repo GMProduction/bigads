@@ -15,12 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 //USER
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', 'Main\MainController@index');
 Route::post('/post-register', 'Auth\AuthController@register');
-
 Route::get('/product/{id}', 'Main\MainController@detail');
 
 Route::get('/cart', function () {

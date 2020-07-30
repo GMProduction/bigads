@@ -46,33 +46,46 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
+                            @foreach($trans as $v)
+                                <tr>
+                                    <td class="budget">
+                                        {{ $loop->index + 1 }}
+                                    </td>
 
-                                <td class="budget">
-                                    1
-                                </td>
+                                    <td class="budget">
+                                        Iklan {{ $v->produk->jenis }}
+                                    </td>
 
-                                <td class="budget">
-                                    Iklan Facebook Banner
-                                </td>
+                                    <td class="budget">
+                                        {{ $v->tgl_mulai }} - {{ $v->tgl_akhir }}
+                                    </td>
 
-                                <td class="budget">
-                                    12 Mei 2020 - 14 Juli 2020
-                                </td>
+                                    <td class="budget">
+                                        @switch($v->payment[0]->status)
+                                            @case('0')
+                                            Menunggu Konfirmasi
+                                            @break
+                                            @case('1')
+                                            Di Terima
+                                            @break
+                                            @case('2')
+                                            Di Tolak
+                                            @break
+                                            @default
+                                            @break
+                                        @endswitch
+                                    </td>
 
-                                <td class="budget">
-                                    Belum / Sudah
-                                </td>
 
+                                    <td class="budget">
+                                        {{ $v->status }}
+                                    </td>
 
-                                <td class="budget">
-                                    Belum di konfirmasi / menunggu tayang / sedang tayang / selesai
-                                </td>
-
-                                <td>
-                                    <a href="/user/detailtransaksi" class="btn btn-sm btn-primary">Detail</a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="/user/detailtransaksi/{{ $v->id }}" class="btn btn-sm btn-primary">Detail</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

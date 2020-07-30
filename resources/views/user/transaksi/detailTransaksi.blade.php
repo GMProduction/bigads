@@ -54,20 +54,21 @@
                                                             </td>
 
                                                             <td class="budget">
-
+                                                                <img src="{{asset('/images/uploads')}} / {{ $trans->produk->url }}"
+                                                                     style="height: 100px; width: 100px; object-fit: cover">
                                                             </td>
 
                                                             <td class="budget">
-                                                                Iklan Facebook
+                                                                Iklan {{ $trans->produk->jenis }}
                                                             </td>
 
 
                                                             <td class="budget">
-                                                                12.000
+                                                                {{ number_format($trans->produk->traffic, 0, ',', '.') }}
                                                             </td>
 
                                                             <td class="budget">
-                                                               Rp 200.000
+                                                               Rp {{ number_format($trans->produk->harga, 0, ',', '.') }}
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -92,7 +93,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="tanggalPinjam">Tanggal Pesan</label>
                                                 <input type="text" id="tanggalPinjam" name="tanggalPinjam" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $trans->created_at }}">
                                             </div>
                                         </div>
 
@@ -100,7 +101,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="tanggalPinjam">Tanggal Tayang</label>
                                                 <input type="text" id="tanggalPinjam" name="tanggalPinjam" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $trans->tgl_mulai }} - {{ $trans->tgl_akhir }}">
                                             </div>
                                         </div>
 
@@ -108,7 +109,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="status">Status</label>
                                                 <input type="text" id="status" name="status" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $trans->status }}">
                                             </div>
                                         </div>
 
@@ -116,7 +117,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="total">Total Harga</label>
                                                 <input type="text" id="total" name="total" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="Rp {{ number_format($trans->harga, 0, ',', '.') }}">
                                             </div>
                                         </div>
 

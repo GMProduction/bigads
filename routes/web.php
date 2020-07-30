@@ -29,21 +29,14 @@ Route::get('/kontak', function () {
 });
 
 
-Route::get('/user', function () {
-    return view('user.dashboard');
-});
+Route::get('/user', 'Main\MainController@dashboard');
 
-Route::get('/user/transaksi', function () {
-    return view('user.transaksi.transaksi');
-});
+Route::get('/user/transaksi', 'Main\MainController@history');
 
-Route::get('/user/detailtransaksi', function () {
-    return view('user.transaksi.detailtransaksi');
-});
+Route::get('/user/detailtransaksi/{id}', 'Main\MainController@detailHistory');
 
-Route::get('/user/profil', function () {
-    return view('user.profil.profil');
-});
+Route::get('/user/profil', 'Main\MainController@profile');
+Route::post('/user/profil/update', 'Main\MainController@updateProfile');
 
 
 Route::get('/login', function () {

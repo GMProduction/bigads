@@ -32,21 +32,21 @@
                             <div class="text-left">
                                 <p class="mb-1">Nama</p>
                                 <h6 class="h3 mb-4">
-{{--                                    {{ $user->no_identitas }}--}}
+                                    {{ $user->nama }}
                                 </h6>
                                 <p class="mb-1">email</p>
                                 <h6 class="h3 mb-4">
-{{--                                    {{ $user->nama_pemohon }}--}}
+                                    {{ $user->email }}
                                 </h6>
 
                                 <p class="mb-1">Phone</p>
                                 <h6 class="h3 mb-4">
-{{--                                    {{ $user->tempat_lahir }}--}}
+                                    {{ $user->phone }}
                                 </h6>
 
                                 <p class="mb-1">Alamat</p>
                                 <h6 class="h3 mb-4">
-{{--                                    {{ $user->tanggal_lahir }}--}}
+                                    {{ $user->alamat }}
                                 </h6>
 
 
@@ -65,9 +65,9 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="/user/pemohon/update" method="POST">
+                            <form action="/user/profil/update" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="">
+                                <input type="hidden" name="id" value="{{ $user->id }}">
                                 <h6 class="heading-small text-muted mb-4">Informasi User</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
@@ -75,8 +75,8 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="namaMitra">Nama</label>
-                                                <input type="text" id="namaMitra" name="namaMitra"
-                                                       class="form-control" value="">
+                                                <input type="text" id="namaMitra" name="nama"
+                                                       class="form-control" value="{{ $user->nama }}">
                                             </div>
                                         </div>
 
@@ -84,7 +84,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="email">Email</label>
                                                 <input type="text" id="email" name="email"
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $user->email }}">
                                             </div>
                                         </div>
 
@@ -92,7 +92,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="phone">Phone</label>
                                                 <input type="text" id="phone" name="phone"
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $user->phone }}">
                                             </div>
                                         </div>
 
@@ -100,7 +100,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="alamat">Alamat</label>
                                                 <input type="text" id="alamat" name="alamat"
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $user->alamat }}">
                                             </div>
                                         </div>
 

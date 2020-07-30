@@ -98,7 +98,7 @@
                                                             </td>
 
                                                             <td class="budget">
-                                                                {{$transaksi->harga}}
+                                                                Rp. {{number_format($transaksi->produk->harga,0,',','.')}}
                                                             </td>
 
                                                             <td class="budget">
@@ -222,7 +222,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="total">Total Harga</label>
                                                 <input type="text" id="total" name="total" readonly
-                                                       class="form-control" value="{{$transaksi->harga}}">
+                                                       class="form-control" value="Rp. {{number_format($transaksi->harga,0,',','.')}}">
                                             </div>
                                         </div>
 

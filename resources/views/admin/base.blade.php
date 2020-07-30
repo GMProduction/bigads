@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/DataTables/datatables.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/assets/css/argon.css?v=1.2.0')}}" type="text/css">
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="{{asset('assets/js/swal.min.js')}}"></script>
+
 </head>
 
 <body style="background-color: #eeeeee">
@@ -63,9 +65,6 @@
                             <span class="nav-link-text" style="margin-left: 10px">Data Mitra</span>
                         </a>
                     </li>
-
-
-
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

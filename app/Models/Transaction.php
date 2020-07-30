@@ -9,13 +9,23 @@ class Transaction extends Model
 {
     //
 
-    public function product()
-    {
+    protected $table = 'transactions';
+
+    public function payment(){
+        return $this->hasMany(Payment::class,'transactions_id');
+    }
+
+    public function lastPayment(){
+        return $this->hasMany(Payment::class,'transactions_id')->latest('id');
+    }
+
+    public function produk(){
         return $this->belongsTo(Produk::class, 'product_id');
     }
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+
 }

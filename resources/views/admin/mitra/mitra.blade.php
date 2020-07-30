@@ -34,7 +34,7 @@
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
+                        <table id="tabel" class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">#</th>
@@ -46,62 +46,27 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
-
-                                <td class="budget">
-                                    1
-                                </td>
-
-                                <td class="budget">
-                                    Facebook Corporate
-                                </td>
-
-                                <td class="budget">
-                                    08751528581
-                                </td>
-
-                                <td class="budget">
-                                    facebook@gmail.com
-                                </td>
-
-
-                                <td class="budget">
-                                    Jl. in aja dulu ya
-                                </td>
-
-                                <td>
-                                    <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                            @forelse($mitra as $m)
+                                <tr>
+                                    <td>{{ $loop->index + 1}}</td>
+                                    <td>{{$m->nama}}</td>
+                                    <td>{{$m->phone}}</td>
+                                    <td>{{$m->email}}</td>
+                                    <td>{{$m->alamat}}</td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td class="text-center" colspan="6">Belum ada data iklan</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>
                     <!-- Card footer -->
-                    <div class="card-footer py-4">
-                        <nav aria-label="...">
-                            <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -110,6 +75,10 @@
 @endsection
 
 @section('script')
-
+    <script>
+        $(document).ready(function () {
+            $('#tabel').DataTable();
+        });
+    </script>
 
 @endsection

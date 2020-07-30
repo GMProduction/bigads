@@ -70,18 +70,16 @@ Route::get('/mitra', function () {
 });
 
 Route::get('/mitra/iklan', 'Mitra\IklanController@index');
-Route::get('/mitra/tambahiklan', function () {
+Route::get('/mitra/iklan/tambahiklan', function () {
     return view('mitra.iklan.tambahiklan');
 });
-Route::post('/mitra/tambahiklan', 'Mitra\IklanController@addForm');
+Route::post('/mitra/iklan/tambahiklan', 'Mitra\IklanController@addForm');
+Route::get('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
+Route::post('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
+Route::get('/mitra/transaksi', 'Mitra\TransaksiController@index');
 
-Route::get('/mitra/transaksi', function () {
-    return view('mitra.transaksi.transaksi');
-});
-
-Route::get('/mitra/profil', function () {
-    return view('mitra.profil.profil');
-});
+Route::get('/mitra/profil', 'Mitra\ProfileController@index');
+Route::post('/mitra/profil', 'Mitra\ProfileController@index');
 
 //ADMIN
 
@@ -89,17 +87,14 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/admin/iklan', function () {
-    return view('admin.iklan.iklan');
-});
+Route::get('/admin/iklan', 'Admin\IklanController@index');
 
-Route::get('/admin/transaksi', function () {
-    return view('admin.transaksi.transaksi');
-});
+Route::get('/admin/transaksi', 'Admin\TransaksiController@index');
 
-Route::get('/admin/mitra', function () {
-    return view('admin.mitra.mitra');
-});
+Route::get('/admin/transaksi/detailtransaksi/{id}', 'Admin\TransaksiController@detail');
+Route::post('/admin/transaksi/detailtransaksi/{id}', 'Admin\TransaksiController@detail');
+
+Route::get('/admin/mitra', 'Admin\MitraController@index');
 
 Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi')->name('cetakAdminDataTransaksi');
 Route::get('/admin/mitra/cetak', 'LaporanController@cetakAdminDataMitra')->name('cetakAdminDataMitra');

@@ -50,7 +50,7 @@
                         </div>
                         <form method="POST" action="/post-register">
                             @csrf
-                            <input id="roles" name="roles" value="member">
+                            <input id="roles" name="roles" value="member" hidden>
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">

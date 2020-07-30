@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input id="id" name="id" value="{{$iklan->id}}">
+                            <input id="id" name="id" value="{{$iklan->id}}" hidden>
                             <h6 class="heading-small text-muted mb-4">Data</h6>
                             <div class="pl-lg-4">
                                 <div class="row">

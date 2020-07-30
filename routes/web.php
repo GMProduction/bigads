@@ -37,6 +37,10 @@ Route::get('/user/transaksi', function () {
     return view('user.transaksi.transaksi');
 });
 
+Route::get('/user/detailtransaksi', function () {
+    return view('user.transaksi.detailtransaksi');
+});
+
 Route::get('/user/profil', function () {
     return view('user.profil.profil');
 });

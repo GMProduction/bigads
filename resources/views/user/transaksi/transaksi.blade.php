@@ -17,23 +17,7 @@
                     </div>
 
                     <div class="col-lg-8 col-8">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="dariTanggal" class="form-control-label text-white">Dari</label>
-                                    <input class="form-control" type="date" id="dariTanggal" name="dariTanggal">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="sampaiTanggal" class="form-control-label text-white">Sampai</label>
-                                    <input class="form-control" type="date" id="sampaiTanggal" name="sampaiTanggal">
-                                </div>
-                            </div>
-                            <div class="col-lg-2 mt-auto mb-auto">
-                                <a href="/admin/transaksi/cetak" class="btn btn-md btn-neutral">Cetak</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -55,7 +39,7 @@
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">#</th>
                                 <th scope="col" class="sort" data-sort="budget">Nama Iklan</th>
-                                <th scope="col" class="sort" data-sort="status">Tanggal</th>
+                                <th scope="col" class="sort" data-sort="status">Tanggal Tayang</th>
                                 <th scope="col" class="sort" data-sort="status">Pembayaran</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col" class="sort" data-sort="status">Action</th>
@@ -86,7 +70,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="" class="btn btn-sm btn-primary">Konfirmasi pembayaran</a>
+                                    <a href="/user/detailtransaksi" class="btn btn-sm btn-primary">Detail</a>
                                 </td>
                             </tr>
                             </tbody>

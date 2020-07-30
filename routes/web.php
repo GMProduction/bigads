@@ -26,7 +26,6 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-
 Route::get('/payment', function () {
     return view('payment');
 });
@@ -46,6 +45,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/user/transaksi', function () {
     return view('user.transaksi.transaksi');
+});
+
+Route::get('/user/detailtransaksi', function () {
+    return view('user.transaksi.detailtransaksi');
 });
 
 Route::get('/user/profil', function () {

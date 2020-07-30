@@ -27,16 +27,14 @@
                     </tr>
                     </thead>
                     <tbody class="list">
-                    {{--                    @foreach($produk as $p)--}}
                     <tr>
                         <td class="text-center">1</td>
-                        <td class="text-center"><img src="{{asset('assets/img/slider/slider1.jpg')}}"
+                        <td class="text-center"><img src="{{asset('/images/uploads')}} / {{ $product->url }}"
                                                      style="height: 100px; width: 100px; object-fit: cover"></td>
-                        <td class="text-center">Iklan facebook banner</td>
-                        <td class="text-center">Rp 400.000</td>
+                        <td class="text-center">Iklan {{ $product->jenis }}</td>
+                        <td class="text-center">Rp. {{ number_format($product->harga, 0, ',', '.') }}</td>
 
                     </tr>
-                    {{--                    @endforeach--}}
                     </tbody>
                 </table>
             </div>
@@ -45,32 +43,31 @@
 
         <div class="input-daterange datepicker row align-items-center">
             <div class="col-3 offset-6">
-                <p class="mb-1 text-xs">Tanggal Sewa</p>
+                <p class="mb-1 text-xs">Tanggal Mulai</p>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Start date" type="text" value="06/18/2020">
+                        <input id="sewa" class="form-control" placeholder="Start date" type="text" value="06/18/2020">
                     </div>
                 </div>
             </div>
             <div class="col-3">
-                <p class="mb-1 text-xs">Tanggal Kembali</p>
+                <p class="mb-1 text-xs">Tanggal Selesai</p>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input class="form-control" placeholder="End date" type="text" value="06/22/2020">
+                        <input id="kembali" class="form-control" placeholder="End date" type="text" value="06/22/2020">
                     </div>
                 </div>
             </div>
-
-
         </div>
 
-
+        <div>Rincian Sewa = <span id="temp-sub">0</span> x ( <span id="lama">0</span> ) Hari = Rp. <span
+                id="temp-tot">0</span></div>
         <div class="row">
 
             <div class="col-12">
@@ -87,30 +84,13 @@
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label  for="nama">Sub Total</label>
-                                <input type="text" readonly id="nama" name="nama"
+                                <label for="nama">Total</label>
+                                <input type="text" readonly id="subTotal" name="subTotal"
                                        class="form-control">
                             </div>
                         </div>
-
-                        <div class="col-lg-12 mb-3">
-                            <div class="form-group">
-                                <label for="url">Diskon</label>
-                                <input type="number" readonly id="harga" name="harga"
-                                       class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="url">Total</label>
-                                <input type="number" readonly id="harga" name="harga"
-                                       class="form-control">
-                            </div>
-                        </div>
-
                         <div class="col-lg-2 mt-auto mb-auto ml-auto">
-                            <a href="/admin/transaksi/cetak" class="btn btn-md btn-primary">Check Out</a>
+                            <a href="#" onclick="addToCart()" class="btn btn-md btn-primary">Check Out</a>
                         </div>
 
                     </div>
@@ -123,6 +103,74 @@
 @endsection
 
 @section('script')
+    <script>
+        let subtotal = 0, diskon = 0, total = 0, lama = 0;
+        var date_diff_indays = function (date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+        };
 
+        function hitungTotal() {
+            let tgl1 = $('#sewa').val();
+            let tgl2 = $('#kembali').val();
+            let tempSubTotal = '{{ $product->harga }}';
+            lama = date_diff_indays(tgl1, tgl2);
+            subtotal = tempSubTotal * lama;
+            $('#subTotal').val(subtotal);
+            $('#temp-sub').html(tempSubTotal);
+            $('#lama').html(lama);
+            $('#temp-tot').html(subtotal);
+        }
+
+        async function addToCart() {
+            event.preventDefault();
+            let data = {
+                '_token': "{{ csrf_token() }}",
+                id: '{{ $product->id }}',
+                harga: $('#subTotal').val(),
+                sewa: $('#sewa').val(),
+                kembali: $('#kembali').val()
+            };
+            try {
+                let res = await $.post('/ajax/addToCart', data);
+                alert('Transaksi Berhasil')
+                window.location.href = '/payment/' + res['payload'];
+            } catch (e) {
+                alert('Transaksi Gagal')
+            }
+        }
+
+        $(document).ready(function () {
+            hitungTotal();
+            $('#sewa').on('change', function () {
+                hitungTotal();
+            });
+            $('#kembali').on('change', function () {
+                hitungTotal();
+            });
+
+
+            $('#btn-cekout').on('click', async function (e) {
+                e.preventDefault();
+                let code = $('#voucher').val();
+                let data = {
+                    '_token': '{{ csrf_token() }}',
+                    diskon: $('#diskon').val(),
+                    nominal: $('#total').val(),
+                    sewa: $('#sewa').val(),
+                    kembali: $('#kembali').val(),
+                };
+                let res = await $.post('/ajax/cekout', data);
+                if (res['status'] === 200 && res['payload'] !== null) {
+                    let id = res['payload'];
+                    alert('Sewa Berhasil');
+                    window.location.href = '/payment/' + id;
+                } else {
+                    alert('Sewa gagal');
+                }
+            });
+        });
+    </script>
 
 @endsection

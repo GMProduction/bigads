@@ -21,7 +21,7 @@
                 <p style="font-size: 20px; font-weight: bold" class="text-primary mb-4">
                     Rp. {{ number_format($product->harga, 0, ',', '.') }} /Hari</p>
 
-                <button type="button" onclick="addToCart()" class="btn  btn-primary w-50">Pesan Sekarang</button>
+                <a href="/cart/{{ $product->id }}" class="btn  btn-primary w-50">Pesan Sekarang</a>
 
             </div>
         </div>
@@ -60,20 +60,7 @@
 @section('script')
 
     <script>
-        async function addToCart() {
-            let data = {
-                '_token': "{{ csrf_token() }}",
-                id: '{{ $product->id }}',
-                harga: '{{ $product->harga }}',
-                qty: $('#qty').val()
-            };
-            try {
-                let res = await $.post('/ajax/addToCart', data);
-                alert(res['status'])
-            } catch (e) {
-                console.log(e)
-            }
-        }
+
 
         $(document).ready(function () {
             const minus = $('.quantity__minus');

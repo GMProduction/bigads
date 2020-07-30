@@ -18,18 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Main\MainController@index');
 Route::post('/post-register', 'Auth\AuthController@register');
 Route::get('/product/{id}', 'Main\MainController@detail');
-
-Route::get('/cart', function () {
-    return view('cart');
-});
-
-
-Route::get('/payment', function () {
-    return view('payment');
-});
-Route::get('/detail', function () {
-    return view('detail');
-});
+Route::get('/cart/{id}', 'Main\TransactionController@cartPage');
+Route::post('/ajax/addToCart', 'Main\TransactionController@addToCart');
+Route::get('/payment/{id}', 'Main\TransactionController@pagePayment');
+Route::post('/payment/send', 'Main\TransactionController@send');
 
 
 Route::get('/kontak', function () {

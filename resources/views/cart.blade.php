@@ -29,7 +29,7 @@
                     <tbody class="list">
                     <tr>
                         <td class="text-center">1</td>
-                        <td class="text-center"><img src="{{asset('/images/uploads')}} / {{ $product->url }}"
+                        <td class="text-center"><img src="{{asset('/uploads/iklan')}}/{{ $product->images }}"
                                                      style="height: 100px; width: 100px; object-fit: cover"></td>
                         <td class="text-center">Iklan {{ $product->jenis }}</td>
                         <td class="text-center">Rp. {{ number_format($product->harga, 0, ',', '.') }}</td>
@@ -66,25 +66,46 @@
             </div>
         </div>
 
-        <div>Rincian Sewa = <span id="temp-sub">0</span> x ( <span id="lama">0</span> ) Hari = Rp. <span
-                id="temp-tot">0</span></div>
+
         <div class="row">
 
             <div class="col-12">
-                <div class="text-left mt-5">
-                    <h2><i class="mr-3" data-feather="twitch"></i>Total Harga</h2>
+                <div class="text-left mt-5 mb-3">
+                    <h2><i class="mr-3" data-feather="twitch"></i>Rincian</h2>
                 </div>
 
                 <div class="d-block bg-gradient-red mb-2" style="height: 3px; width: 300px; margin-top: 20px">
 
                 </div>
 
+
                 <div class="col-lg-12">
                     <div class="card p-3">
 
-                        <div class="col-lg-12">
+{{--                        <div class="col-lg-12 mt-5">--}}
+{{--                        <div>Rincian Sewa = <span id="temp-sub">0</span> x ( <span id="lama">0</span> ) Hari = Rp. <span--}}
+{{--                                id="temp-tot">0</span></div>--}}
+{{--                        </div>--}}
+
+                        <div class="col-lg-12 ">
                             <div class="form-group">
-                                <label for="nama">Total</label>
+                                <label for="harga">Harga</label>
+                                <input type="text" readonly id="harga" name="harga"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 ">
+                            <div class="form-group">
+                                <label for="lamanya">Durasi</label>
+                                <input type="text" readonly id="lamanya" name="lamanya"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 ">
+                            <div class="form-group">
+                                <label for="subTotal">Total</label>
                                 <input type="text" readonly id="subTotal" name="subTotal"
                                        class="form-control">
                             </div>
@@ -117,7 +138,9 @@
             let tempSubTotal = '{{ $product->harga }}';
             lama = date_diff_indays(tgl1, tgl2);
             subtotal = tempSubTotal * lama;
-            $('#subTotal').val(subtotal);
+            $('#subTotal').val("Rp. " +subtotal);
+            $('#harga').val("Rp. " +tempSubTotal);
+            $('#lamanya').val(lama + " hari");
             $('#temp-sub').html(tempSubTotal);
             $('#lama').html(lama);
             $('#temp-tot').html(subtotal);
@@ -128,7 +151,7 @@
             let data = {
                 '_token': "{{ csrf_token() }}",
                 id: '{{ $product->id }}',
-                harga: $('#subTotal').val(),
+                harga: subtotal,
                 sewa: $('#sewa').val(),
                 kembali: $('#kembali').val()
             };

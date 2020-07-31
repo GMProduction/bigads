@@ -42,7 +42,6 @@
                                 <th scope="col" class="sort" data-sort="status">Phone</th>
                                 <th scope="col" class="sort" data-sort="status">Email</th>
                                 <th scope="col" class="sort" data-sort="status">Alamat</th>
-                                <th scope="col" class="sort" data-sort="status">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
@@ -53,9 +52,7 @@
                                     <td>{{$m->phone}}</td>
                                     <td>{{$m->email}}</td>
                                     <td>{{$m->alamat}}</td>
-                                    <td>
-                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                    </td>
+
                                 </tr>
                             @empty
                                 <tr>

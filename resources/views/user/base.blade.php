@@ -36,9 +36,9 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" id="dashboard" href="/user/">
+                        <a class="nav-link" id="dashboard" href="/">
                             <i data-feather="menu"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Dashboard</span>
+                            <span class="nav-link-text" style="margin-left: 10px">Beranda</span>
                         </a>
                     </li>
 
@@ -98,7 +98,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <!-- Avatar -->
-                                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg"
+                                        <img alt="Image placeholder" src="{{asset('assets/img/theme/team-4.jpg')}}"
                                              class="avatar rounded-circle">
                                     </div>
                                     <div class="col ml--2">
@@ -119,7 +119,7 @@
                            aria-expanded="false">
                             <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-4.png">
+                    <img alt="Image placeholder" src="{{asset('assets/img/theme/team-1.jpg')}}">
                   </span>
                                 <div class="media-body  ml-2  d-none d-lg-block">
                                     <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->nama }}</span>

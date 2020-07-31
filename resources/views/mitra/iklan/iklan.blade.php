@@ -40,7 +40,7 @@
                                 <th scope="col" class="sort" data-sort="budget">Nama Iklan</th>
                                 <th scope="col" class="sort" data-sort="status">URL</th>
                                 <th scope="col" class="sort" data-sort="status">Jenis Iklan</th>
-                                <th scope="col" class="sort" data-sort="completion">Trafic /bulan</th>
+                                <th scope="col" class="sort" data-sort="completion">Trafic /bulan </th>
                                 <th scope="col" class="sort" data-sort="completion">Ukuran (pixel)</th>
                                 <th scope="col" class="sort" data-sort="completion">Harga (hari)</th>
                                 <th scope="col" class="sort" data-sort="completion">gambar</th>

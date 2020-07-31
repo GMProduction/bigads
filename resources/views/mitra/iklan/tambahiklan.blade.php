@@ -70,7 +70,7 @@
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label class="keteranganJadwal" for="trafic">Trafic (bulan)</label>
+                                            <label class="keteranganJadwal" for="trafic">Trafic /bulan <a href="https://www.semrush.com/" class="text-sm text-danger" target="_blank">*Cek trafic</a></label>
                                             <input type="number" id="trafic" placeholder="Trafik iklan per bulann" name="trafic"
                                                    class="form-control">
                                         </div>

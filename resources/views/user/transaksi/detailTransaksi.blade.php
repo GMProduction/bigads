@@ -54,7 +54,7 @@
                                                             </td>
 
                                                             <td class="budget">
-                                                                <img src="{{asset('/images/uploads')}} / {{ $trans->produk->url }}"
+                                                                <img src="{{asset('/uploads/iklan')}}/{{ $trans->produk->images }}"
                                                                      style="height: 100px; width: 100px; object-fit: cover">
                                                             </td>
 

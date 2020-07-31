@@ -43,12 +43,12 @@
             @foreach($products as $v)
                 <div class="col-3">
                     <div class="card" style="height: 350px">
-                        <img class="card-img-top" src="{{asset('uploads/image')}}/{{$v->url}}" alt="Card image cap"
+                        <img class="card-img-top" src="{{asset('uploads/iklan')}}/{{$v->images}}" alt="Card image cap"
                              style="height: 150px; object-fit: cover">
                         <div class="card-body">
                             <h5 class="card-title mb-0">{{ $v->nama }}</h5>
                             <h4 class="card-title text-primary mt-0 mb-1">Rp. {{ number_format($v->harga, 0, ',', '.') }}/ hari</h4>
-                            <p class="card-text text-sm text-black-50" style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
+                            <p class="card-text text-sm text-black-50" style="height: 50px; overflow: hidden"><a href="{{ $v->url }}"> {{ $v->url }}</a></p>
                             <a href="/product/{{ $v->id }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>

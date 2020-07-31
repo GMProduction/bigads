@@ -5,7 +5,7 @@
     <section class="container mt-5 mb-5">
         <div class="row">
             <div class="col-7">
-                <img src="{{asset('/images/uploads')}} / {{ $product->url }}"
+                <img src="{{asset('uploads/iklan')}}/{{$product->images}}"
                      style="width: 100%; height: 300px; object-fit: cover">
             </div>
 
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="d-block bg-gradient-blue" style="height: 3px; width: 300px; margin-top: 50px">
+        <div class="d-block bg-gradient-red" style="height: 3px; width: 300px; margin-top: 50px">
 
         </div>
 
@@ -40,7 +40,7 @@
             @foreach($products as $v)
                 <div class="col-3">
                     <div class="card" style="height: 350px">
-                        <img class="card-img-top" src="{{asset('/images/uploads')}} / {{ $v->url }}" alt="Card image cap"
+                        <img class="card-img-top" src="{{asset('uploads/iklan')}}/{{$v->images}}" alt="Card image cap"
                              style="height: 150px; object-fit: cover">
                         <div class="card-body">
                             <h5 class="card-title mb-0">{{ $v->nama }}</h5>

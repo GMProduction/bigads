@@ -79,7 +79,7 @@
                                     <td class="budget text-right">
                                         Rp. {{number_format($t->harga,0,',','.')}}
                                     </td>
-                                    <td>{{$t->payment[0]->status == '0' ? 'Belum' : ($t->payment[0]->status == '1' ? 'Lunas' : 'Ditolak')}}</td>
+                                    <td>{{$t->payment[0] == null ? ($t->payment[0]->status == '0' ? 'Belum' : ($t->payment[0]->status == '1' ? 'Lunas' : 'Ditolak')) : ''}}</td>
 
 
                                     <td class="budget">
@@ -87,7 +87,7 @@
                                     </td>
 
                                     <td>
-                                        <a href="/admin/transaksi/detailtransaksi/{{$t->id}}" class="btn btn-sm btn-primary">Konfirmasi pembayaran</a>
+                                        <a href="/admin/transaksi/detailtransaksi/{{$t->id}}" class="btn btn-sm btn-primary">Detail</a>
                                     </td>
                                 </tr>
                             @empty

@@ -31,7 +31,7 @@
                             <tr>
                                 <td class="text-center">1</td>
                                 <td class="text-center"><img
-                                        src="{{asset('/images/uploads')}} / {{ $transaction->produk->url }}"
+                                        src="{{asset('/uploads/iklan')}}/{{ $transaction->produk->images }}"
                                         style="height: 100px; width: 100px; object-fit: cover"></td>
                                 <td class="text-center">Iklan {{ $transaction->produk->jenis }}</td>
                                 <td class="text-center"> Rp {{ number_format($transaction->produk->harga, 0, ',', '.') }}</td>
@@ -64,15 +64,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="status">Status</label>
-                                    <input type="text" id="status" name="status" readonly
-                                           class="form-control" value="{{ $transaction->status }}">
-                                </div>
-                            </div>
 
-                            <div class="col-lg-5">
+                            <div class="col-lg-10">
                                 <div class="form-group">
                                     <label class="form-control-label" for="total">Total Harga</label>
                                     <input type="text" id="total" name="total" readonly

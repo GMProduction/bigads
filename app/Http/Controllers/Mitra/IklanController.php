@@ -62,4 +62,16 @@ class IklanController extends CustomController
         $this->insert(Produk::class, $data);
         return redirect()->back()->with(['success' => 'success']);
     }
+
+    public function hapus($id)
+    {
+        try {
+            Produk::destroy($id);
+
+            return $this->jsonResponse('success', 200);
+        } catch (\Exception $er) {
+            return $this->jsonResponse('error '.$er, 500);
+
+        }
+    }
 }

@@ -64,11 +64,19 @@
                                     </td>
 
                                     <td class="budget">
-                                        <a> tayang / tolak</a>
+                                        <a> {{$p->status == '0' ? 'Menunggu' : ($p->status == '1' ? 'Tayang' : 'Ditolak')}}</a>
                                     </td>
-
-                                    <td>
-                                        <a href="/mitra/iklan/editiklan/{{$p->id}}" class="btn btn-sm btn-dribbble">Edit</a>
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only btn-primary text-light" href="#" role="button"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="/mitra/iklan/editiklan/{{$p->id}}">Edit</a>
+                                                <a class="dropdown-item" href="#!" onclick="hapus('{{$p->id}}', '{{$p->nama}}')">Delete</a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 @empty
@@ -93,6 +101,26 @@
     $(document).ready(function () {
         $('#tabel').DataTable();
     });
+
+    function hapus(id, name) {
+        Swal.fire({
+            title: 'Apa anda yakin untuk menghapus iklan '+name+' ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak'
+        }).then(async (result) => {
+            if (result.value) {
+                let data = {
+                    '_token': '{{csrf_token()}}'
+                };
+                let get = await $.post('/mitra/iklan/hapus/' + id, data);
+                window.location.reload();
+            }
+        })
+    }
 </script>
 
 @endsection

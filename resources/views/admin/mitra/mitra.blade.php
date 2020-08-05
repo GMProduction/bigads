@@ -54,7 +54,7 @@
                                     <td>{{$m->email}}</td>
                                     <td>{{$m->alamat}}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="#!" onclick="hapus('{{$m->id}}', '{{$m->nama}}')" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                           @endforeach
@@ -75,6 +75,26 @@
         $(document).ready(function () {
             $('#tabel').DataTable();
         });
+
+        function hapus(id, name) {
+            Swal.fire({
+                title: 'Apa anda yakin untuk menghapus Mitra '+name+' ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then(async (result) => {
+                if (result.value) {
+                    let data = {
+                        '_token': '{{csrf_token()}}'
+                    };
+                    let get = await $.post('/admin/mitra/hapus/' + id, data);
+                    window.location.reload();
+                }
+            })
+        }
     </script>
 
 @endsection

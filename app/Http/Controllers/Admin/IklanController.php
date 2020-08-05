@@ -13,52 +13,74 @@ class IklanController extends CustomController
         parent::__construct();
     }
 
-    public function index(){
-        $data['iklan'] = Produk::with(['user','transaksi'])->get();
+    public function index()
+    {
+        if ($this->request->isMethod('POST')) {
+            try {
+                $data = [
+                    'status' => $this->postField('status'),
+                ];
+                $this->update(Produk::class, $data);
+
+                return $this->jsonResponse('success', 200);
+            }catch (\Exception $er){
+                return $this->jsonResponse('error '.$er, 500);
+
+            }
+        }
+        $data['iklan'] = Produk::with(['user', 'transaksi'])->get();
+
 //        return $data->toArray();
         return view('admin.iklan.iklan')->with($data);
     }
 
-    public function editForm($id){
-        $user = auth()->user()->id;
-        $data['iklan'] = Produk::where('user_id', $user)->where('id',$id)->first();
-        if($this->request->isMethod('POST')){
+    public function editForm($id)
+    {
+        $user          = auth()->user()->id;
+        $data['iklan'] = Produk::where('user_id', $user)->where('id', $id)->first();
+        if ($this->request->isMethod('POST')) {
             $data = [
-                'nama' => $this->postField('namaweb'),
-                'jenis' => $this->postField('jenisIklan'),
+                'nama'    => $this->postField('namaweb'),
+                'jenis'   => $this->postField('jenisIklan'),
                 'traffic' => $this->postField('trafic'),
-                'ukuran' => $this->postField('ukuran'),
-                'harga' => $this->postField('harga'),
-                'url' => $this->postField('url'),
+                'ukuran'  => $this->postField('ukuran'),
+                'harga'   => $this->postField('harga'),
+                'url'     => $this->postField('url'),
             ];
 
             if ($this->request->hasFile('screenshot')) {
                 $image = $this->generateImageName('screenshot');
-                $data   = Arr::add($data, 'images', $image);
+                $data  = Arr::add($data, 'images', $image);
                 $this->uploadImage('screenshot', $image, 'iklan');
             }
             $this->update(Produk::class, $data);
+
             return redirect()->back()->with(['success' => 'success']);
         }
 
         return view('mitra.iklan.editiklan')->with($data);
 
     }
-    public function addForm(){
+
+    public function addForm()
+    {
         $image = $this->generateImageName('screenshot');
-        $user = auth()->user()->id;
-        $data = [
-            'nama' => $this->postField('namaweb'),
-            'jenis' => $this->postField('jenisIklan'),
+        $user  = auth()->user()->id;
+        $data  = [
+            'nama'    => $this->postField('namaweb'),
+            'jenis'   => $this->postField('jenisIklan'),
             'traffic' => $this->postField('trafic'),
-            'ukuran' => $this->postField('ukuran'),
-            'harga' => $this->postField('harga'),
-            'url' => $this->postField('url'),
-            'images' => $image,
-            'user_id' => $user
+            'ukuran'  => $this->postField('ukuran'),
+            'harga'   => $this->postField('harga'),
+            'url'     => $this->postField('url'),
+            'images'  => $image,
+            'user_id' => $user,
         ];
         $this->uploadImage('screenshot', $image, 'iklan');
         $this->insert(Produk::class, $data);
+
         return redirect()->back()->with(['success' => 'success']);
     }
+
+
 }

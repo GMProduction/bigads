@@ -1,6 +1,15 @@
 @extends('admin.base')
 @section('content')
-
+    @if(\Illuminate\Support\Facades\Session::has('success'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: 'Berhasil Merubah Status',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+    @endif
     <!-- Header -->
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
@@ -45,11 +54,13 @@
                                 <th scope="col" class="sort" data-sort="completion">Ukuran (pixel)</th>
                                 <th scope="col" class="sort" data-sort="completion">Harga (hari)</th>
                                 <th scope="col" class="sort" data-sort="completion">screenshot</th>
-                                <th scope="col" class="sort" data-sort="completion">status</th>
+                                <th scope="col" class="sort" data-sort="completion">status pesan</th>
+                                <th scope="col" class="sort" data-sort="completion">status tayang</th>
+                                <th scope="col" class="sort" data-sort="completion">aksi</th>
                             </tr>
                             </thead>
                             <tbody class="list">
-                            @forelse($iklan as $i)
+                            @foreach($iklan as $i)
                                 <tr>
                                     <td>{{ $loop->index + 1}}</td>
                                     <td>{{$i->nama}}</td>
@@ -61,16 +72,14 @@
                                     <td>{{number_format($i->harga, 0,',','.')}}</td>
                                     <td class="budget">
                                         <a target="_blank" href="{{asset('uploads/iklan')}}/{{$i->images}}"><img src="{{asset('uploads/iklan')}}/{{$i->images}}"
-                                                                                                 style="height: 75px; width: 75px; object-fit: cover"></a>
+                                                                                                                 style="height: 75px; width: 75px; object-fit: cover"></a>
                                     </td>
                                     <td>{{$i->transaksi[0]->status ?? 'Belum dipesan'}}</td>
-
+                                    <td>{{$i->status == '0' ? 'Menunggu' : ($i->status == '1' ? 'Tayang' : 'Ditolak')}}</td>
+                                    <td><a class="btn btn-sm btn-primary text-white" onclick="status('{{$i->id}}','{{$i->nama}}','1')" href="#!">Tayangkan</a>
+                                        <a class="btn btn-sm btn-danger text-white"  onclick="status('{{$i->id}}','{{$i->nama}}','2')" href="#!">Tolak</a></td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td class="text-center" colspan="10">Belum ada data iklan</td>
-                                </tr>
-                            @endforelse
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -81,6 +90,8 @@
         </div>
     </div>
 
+
+
 @endsection
 
 @section('script')
@@ -88,6 +99,40 @@
         $(document).ready(function () {
             $('#tabel').DataTable();
         });
+
+         function status(a, name, status) {
+            var st = 'Tolak';
+            switch (status) {
+                case '1' :
+                    st = 'Tayang';
+                    break;
+                default:
+                    break;
+            }
+            Swal.fire({
+                title: 'Apa anda yakin untuk merubah status iklan ' + name + ' menjadi ' + st + ' ?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+            }).then(async (result) => {
+                if (result.value) {
+                    let data = {
+                        '_token': '{{csrf_token()}}',
+                        'status': status,
+                        'id' : a
+                    };
+                    console.log(data);
+                    let get = await $.post('/admin/iklan', data);
+                    console.log(get);
+                    window.location.reload();
+                }
+            })
+        }
+
+
     </script>
 
 @endsection

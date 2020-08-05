@@ -17,4 +17,15 @@ class MitraController extends CustomController
         return view('admin.mitra.mitra')->with(['mitra' => $mitra]);
     }
 
+    public function hapus($id)
+    {
+        try {
+            User::destroy($id);
+            return $this->jsonResponse('success', 200);
+        } catch (\Exception $er) {
+            return $this->jsonResponse('error '.$er, 500);
+
+        }
+    }
+
 }

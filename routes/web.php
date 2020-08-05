@@ -73,6 +73,8 @@ Route::get('/mitra/iklan', 'Mitra\IklanController@index');
 Route::get('/mitra/iklan/tambahiklan', function () {
     return view('mitra.iklan.tambahiklan');
 });
+Route::post('/mitra/iklan/hapus/{id}', 'Mitra\IklanController@hapus');
+
 Route::post('/mitra/iklan/tambahiklan', 'Mitra\IklanController@addForm');
 Route::get('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
 Route::post('/mitra/iklan/editiklan/{id}', 'Mitra\IklanController@editForm');
@@ -88,6 +90,7 @@ Route::get('/admin', function () {
 });
 
 Route::get('/admin/iklan', 'Admin\IklanController@index');
+Route::post('/admin/iklan', 'Admin\IklanController@index');
 
 Route::get('/admin/transaksi', 'Admin\TransaksiController@index');
 
@@ -95,6 +98,7 @@ Route::get('/admin/transaksi/detailtransaksi/{id}', 'Admin\TransaksiController@d
 Route::post('/admin/transaksi/detailtransaksi/{id}', 'Admin\TransaksiController@detail');
 
 Route::get('/admin/mitra', 'Admin\MitraController@index');
+Route::post('/admin/mitra/hapus/{id}', 'Admin\MitraController@hapus');
 
 Route::get('/admin/transaksi/cetak', 'LaporanController@cetakAdminDataTransaksi')->name('cetakAdminDataTransaksi');
 Route::get('/admin/mitra/cetak', 'LaporanController@cetakAdminDataMitra')->name('cetakAdminDataMitra');

@@ -17,23 +17,25 @@
                     </div>
 
                     <div class="col-lg-8 col-8">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="dariLelang" class="form-control-label text-white">Dari</label>
-                                    <input class="form-control" type="date" id="dariLelang" name="dariLelang">
+                        <form action="/admin/transaksi/cetak">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="dariLelang" class="form-control-label text-white">Dari</label>
+                                        <input class="form-control" type="date" id="dariLelang" name="awal">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="sampaiLelang" class="form-control-label text-white">Sampai</label>
+                                        <input class="form-control" type="date" id="sampaiLelang" name="akhir">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mt-auto mb-auto">
+                                    <button type="submit" href="" class="btn btn-md btn-neutral">Cetak</button>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="sampaiLelang" class="form-control-label text-white">Sampai</label>
-                                    <input class="form-control" type="date" id="sampaiLelang" name="sampaiLelang">
-                                </div>
-                            </div>
-                            <div class="col-lg-2 mt-auto mb-auto">
-                                <a href="/admin/transaksi/cetak" class="btn btn-md btn-neutral">Cetak</a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -63,7 +65,7 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            @forelse($transaksi as $t)
+                            @foreach($transaksi as $t)
                                 <tr>
                                     <td class="budget">
                                         {{ $loop->index + 1}}
@@ -90,11 +92,7 @@
                                         <a href="/admin/transaksi/detailtransaksi/{{$t->id}}" class="btn btn-sm btn-primary">Konfirmasi pembayaran</a>
                                     </td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="7" class="text-center">Belum ada transaksi</td>
-                                </tr>
-                            @endforelse
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

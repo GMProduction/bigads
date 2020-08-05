@@ -46,7 +46,7 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            @forelse($mitra as $m)
+                            @foreach($mitra as $m)
                                 <tr>
                                     <td>{{ $loop->index + 1}}</td>
                                     <td>{{$m->nama}}</td>
@@ -57,11 +57,7 @@
                                         <a href="" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td class="text-center" colspan="6">Belum ada data iklan</td>
-                                </tr>
-                            @endforelse
+                          @endforeach
                             </tbody>
                         </table>
                     </div>

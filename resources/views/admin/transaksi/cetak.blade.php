@@ -30,30 +30,46 @@
 <br>
 <div style="width:100%">
     <h4 class="text-center">Laporan Transaksi</h4>
-    <p class="text-center text-black-50">Tanggal awal - Tanggal ahkir</p>
+    <p class="text-center text-black-50">{{$awal}} - {{$akhir}}</p>
 </div>
 <br>
 <br>
 
 <table class="table table-striped">
     <tr>
-        <th> #</th>
-        <th> Nama Iklan</th>
-        <th> Tanggal</th>
-        <th> Pembayaran</th>
-        <th> Status</th>
+        <th scope="col" class="sort" data-sort="name">#</th>
+        <th scope="col" class="sort" data-sort="budget">Nama Iklan</th>
+        <th scope="col" class="sort" data-sort="status">Tanggal</th>
+        <th scope="col" class="sort" data-sort="status">Total</th>
+        <th scope="col" class="sort" data-sort="status">Pembayaran</th>
+        <th scope="col" class="sort" data-sort="status">Status</th>
     </tr>
-    @php $i=1; @endphp
-{{--    @foreach($mitra as $m)--}}
-{{--        <tr>--}}
-{{--            <td> {{$i++}}</td>--}}
-{{--            <td> {{$m->username}}</td>--}}
-{{--            <td> {{$m->email}}</td>--}}
-{{--            <td> {{$m->noHp}}</td>--}}
-{{--            <td> {{$m->alamat}}</td>--}}
+    @foreach($transaksi as $t)
+        <tr>
+            <td class="budget">
+                {{ $loop->index + 1}}
+            </td>
 
-{{--        </tr>--}}
-{{--    @endforeach--}}
+            <td class="budget">
+                {{$t->produk->nama}}
+            </td>
+
+            <td class="budget">
+                {{$t->tgl_mulai}} - {{$t->tgl_akhir}}
+            </td>
+            <td class="budget text-right">
+                Rp. {{number_format($t->harga,0,',','.')}}
+            </td>
+            <td>{{$t->payment[0]->status == '0' ? 'Belum' : ($t->payment[0]->status == '1' ? 'Lunas' : 'Ditolak')}}</td>
+
+
+            <td class="budget">
+                {{$t->status}}
+            </td>
+
+
+        </tr>
+    @endforeach
 </table>
 <div style="right:10px;width: 300px;display: inline-block;margin-top:70px">
     <p class="text-center mb-5">Pimpinan</p>
@@ -63,7 +79,7 @@
 <div style="left:10px;width: 300px; margin-left : 100px;display: inline-block">
     <p class="text-center mb-5">Admin</p>
     <p class="text-center">(
-{{--        {{auth()->user()->username}}--}}
+        {{auth()->user()->username}}
         )</p>
 </div>
 
@@ -71,7 +87,7 @@
 <footer class="footer">
     @php $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') ); @endphp
     <p class="text-right small mb-0 mt-0 pt-0 pb-0"> di cetak oleh :
-{{--        {{auth()->user()->username}}--}}
+        {{auth()->user()->username}}
     </p>
     <p class="text-right small mb-0 mt-0 pt-0 pb-0"> tgl: {{ $date->format('d F Y, H:i:s') }} </p>
 </footer>
